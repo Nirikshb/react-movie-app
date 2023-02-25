@@ -9,7 +9,6 @@ import MovieList from './components/MovieList';
     const [movies, setMovies] = useState([]);
     const [searchValue, setSearchValue] = useState('');
 
-    //fetching data from upi
     const movieSearch = async (SetsearchValue) =>{
      const url = `http://www.omdbapi.com/?apikey=e47a5175&s=${searchValue}`;
      const res = await fetch(url);
@@ -20,12 +19,10 @@ import MovieList from './components/MovieList';
      console.log(responseJson);
     };
   };
-  //handlechange for input
    const handleChange = (e) =>{
    setSearchValue(e.target.value)
    }
 
-   //useeffect with searchValue as par
   useEffect(() =>{
     movieSearch(searchValue);
   },[searchValue]);
@@ -37,7 +34,7 @@ import MovieList from './components/MovieList';
     <h3>Search for movies by their title</h3>
     <input onChange={(e)=>handleChange(e)} ></input>
     <br></br>
-    <button>Search Now!</button>
+    <button >Search Now!</button>
     <div id='reply'></div>
     <div className='movieList'>
       <MovieList movies = {movies.slice(0,3)}/> 
